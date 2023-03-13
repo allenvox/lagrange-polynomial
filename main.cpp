@@ -12,8 +12,7 @@ double interpolate(Data f[], int X, int n_points)
 {
     double result = 0;
     for (int i = 0; i < n_points; i++)
-    {
-        // Compute individual terms of above formula
+    { // compute individual terms
         double term = f[i].y;
         for (int j = 0; j < n_points; j++)
         {
@@ -22,7 +21,6 @@ double interpolate(Data f[], int X, int n_points)
                 term = term * (X - f[j].x) / (f[i].x - f[j].x);
             }
         }
-        // Add current term to result
         result += term;
     }
     return result;
@@ -31,7 +29,7 @@ double interpolate(Data f[], int X, int n_points)
 int main()
 {
     ifstream file("in.txt");
-    Data f[5]; // {{0.847, 1.104}, {1.546, 1.042}, {1.834, 0.029}, {2.647, -0.344}, {2.91, -0.449}};
+    Data f[5];
     for (int i = 0; i < 5; i++)
     {
         file >> f[i].x;
